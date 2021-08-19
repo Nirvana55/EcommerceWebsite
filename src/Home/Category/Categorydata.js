@@ -1,7 +1,7 @@
-import shoes from './images/shoes.jpg';
-import shirts from './images/shirts.jpg';
-import pants from './images/pants.jpg';
-import bag from './images/bag.jpg';
+import shoes from '../../images/shoes.jpg';
+import shirts from '../../images/shirts.jpg';
+import pants from '../../images/pants.jpg';
+import bag from '../../images/bag.jpg';
 
 export const Categorydata = [
 	{

@@ -17,11 +17,15 @@ import HomeIcon from '@material-ui/icons/Home';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
 import SearchIcon from '@material-ui/icons/Search';
-import { useGlobalContext } from '../components/useContext';
+import { useGlobalContext } from '../../components/useContext';
 import NightsStayIcon from '@material-ui/icons/NightsStay';
 import SettingsIcon from '@material-ui/icons/Settings';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import PermContactCalendarRoundedIcon from '@material-ui/icons/PermContactCalendarRounded';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import BookIcon from '@material-ui/icons/Book';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => {
 	return {
@@ -45,6 +49,10 @@ const useStyles = makeStyles((theme) => {
 		active: {
 			background: '#1976d2',
 			borderRadius: '5px',
+		},
+		link: {
+			textDecoration: 'none',
+			color: 'black',
 		},
 	};
 });
@@ -72,8 +80,23 @@ function Sidemenu() {
 			icons: <LocalMallOutlinedIcon />,
 			path: '/shop',
 		},
+		{
+			text: 'Blog',
+			icons: <BookIcon />,
+			path: '/blog',
+		},
+		{
+			text: 'My wishlist',
+			icons: <FavoriteIcon />,
+			path: '/wishlist',
+		},
 	];
 	const secondMenu = [
+		{
+			text: 'Contact',
+			icons: <PermContactCalendarRoundedIcon />,
+			path: '/contact',
+		},
 		{
 			text: 'Policy',
 			icons: <SettingsIcon />,
@@ -91,16 +114,20 @@ function Sidemenu() {
 			<List className={classes.listItems}>
 				{firstMenuItems.map((menu, index) => {
 					return (
-						<ListItem
-							onClick={() => history.push(menu.path)}
-							key={index}
-							className={
-								location.pathname === menu.path ? classes.active : null
-							}
-							button>
-							<ListItemIcon>{menu.icons}</ListItemIcon>
-							<ListItemText>{menu.text}</ListItemText>
-						</ListItem>
+						<Link to={menu.path} key={index} className={classes.link}>
+							<ListItem
+								onClick={() => {
+									history.push(menu.path);
+									handleSideMenu();
+								}}
+								className={
+									location.pathname === menu.path ? classes.active : null
+								}
+								button>
+								<ListItemIcon>{menu.icons}</ListItemIcon>
+								<ListItemText>{menu.text}</ListItemText>
+							</ListItem>
+						</Link>
 					);
 				})}
 			</List>
@@ -111,16 +138,20 @@ function Sidemenu() {
 			<List className={classes.listItems}>
 				{secondMenu.map((menu, index) => {
 					return (
-						<ListItem
-							onClick={() => history.push(menu.path)}
-							key={index}
-							className={
-								location.pathname === menu.path ? classes.active : null
-							}
-							button>
-							<ListItemIcon>{menu.icons}</ListItemIcon>
-							<ListItemText>{menu.text}</ListItemText>
-						</ListItem>
+						<Link key={index} to={menu.path} className={classes.link}>
+							<ListItem
+								onClick={() => {
+									history.push(menu.path);
+									handleSideMenu();
+								}}
+								className={
+									location.pathname === menu.path ? classes.active : null
+								}
+								button>
+								<ListItemIcon>{menu.icons}</ListItemIcon>
+								<ListItemText>{menu.text}</ListItemText>
+							</ListItem>
+						</Link>
 					);
 				})}
 			</List>

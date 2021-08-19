@@ -7,8 +7,10 @@ import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import { IconButton } from '@material-ui/core';
 import { useGlobalContext } from '../components/useContext';
 import homeDescritpion from './Homedata';
-import Category from './Category';
-import Product from './Product';
+import Category from './Category/Category';
+import Userdetail from './Userdetail';
+import Product from './Product/Product';
+import Patner from './Patner';
 
 const useStyles = makeStyles((theme) => {
 	return {
@@ -21,11 +23,14 @@ const useStyles = makeStyles((theme) => {
 
 		shiftbar: theme.mixins.toolbar,
 		homeText: {
-			marginLeft: '1.3rem',
-			marginRight: '1rem',
+			width: '95%',
+
 			marginTop: '2rem',
 			marginBottom: '2rem',
+
 			position: 'relative',
+			marginLeft: 'auto',
+			marginRight: 'auto',
 		},
 		btnShop: {
 			marginTop: '1rem',
@@ -67,7 +72,7 @@ const Home = () => {
 		<>
 			<div className={classes.shiftbar}></div>
 			<section
-				style={{ backgroundImage: `url(${img})` }}
+				style={{ backgroundImage: `url(${img})`, objectFit: 'cover' }}
 				className={classes.descriptionBar}>
 				<div className={classes.homeText}>
 					<Typography
@@ -98,6 +103,8 @@ const Home = () => {
 			</section>
 			<Category />
 			<Product />
+			<Userdetail />
+			<Patner />
 		</>
 	);
 };

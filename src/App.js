@@ -1,15 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Home/Home';
-import Cart from './Pages/Cart';
 import { createTheme, Paper } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
-import Container from '@material-ui/core/Container';
-import blue from '@material-ui/core/colors/blue';
-import red from '@material-ui/core/colors';
 import { useGlobalContext } from './components/useContext';
-import Navbar from './Navbar/Navbar';
-import Sidemenu from './Navbar/Navdrawer';
+import Navbar from './Home/Navbar/Navbar';
+import Sidemenu from './Home/Navbar/Navdrawer';
+import Account from './Account/Account';
+import Contact from './Contact/Contact';
+import Footer from './footer/Footer';
+import Error from './Error/Error';
+import Cart from './Cart/Cart';
+import Blog from './Blog/Blog';
+import Wishlist from './Wishlist/Wishlist';
+import Viewclothes from './View clothes/Viewclothes';
 
 const App = () => {
 	const darkTheme = createTheme({
@@ -57,6 +61,9 @@ const App = () => {
 			secondary: {
 				main: '#f9f9f9',
 			},
+			deleteIcon: {
+				main: 'ff726f',
+			},
 		},
 		typography: {
 			fontFamily: 'Montserrat',
@@ -99,8 +106,27 @@ const App = () => {
 						<Route path='/cart'>
 							<Cart />
 						</Route>
+						<Route path='/wishlist'>
+							<Wishlist />
+						</Route>
+						<Route path='/account'>
+							<Account />
+						</Route>
+						<Route path='/contact'>
+							<Contact />
+						</Route>
+						<Route path='/blog'>
+							<Blog />
+						</Route>
+						<Route path='/viewclothes'>
+							<Viewclothes />
+						</Route>
+						<Route path='*'>
+							<Error />
+						</Route>
 					</Switch>
 				</Paper>
+				<Footer />
 			</Router>
 		</ThemeProvider>
 	);

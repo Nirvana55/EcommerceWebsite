@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme) => {
 	return {};
 });
 
-const Cart = () => {
+const Shoes = () => {
 	const classes = useStyles();
 	return (
 		<div>
@@ -14,4 +14,4 @@ const Cart = () => {
 	);
 };
 
-export default Cart;
+export default Shoes;
